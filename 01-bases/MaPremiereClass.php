@@ -18,7 +18,7 @@ class MaPremiereClass
     public function AfficheValeur1() {
 
         // on va récupérer la $valeur1 de l'instance de la classe (nous avons du faire un new MaPremiereClass avant de pouvoir l'utiliser). $this représente l'instance de la classe
-        echo $this->valeur1;
+        echo $this->valeur1 . PHP_EOL;
     }
 
     public function setValeur1(int $param1){
