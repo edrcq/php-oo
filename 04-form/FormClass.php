@@ -25,7 +25,7 @@ class Form {
         return $this->inputs;
     }
 
-    public function addInput($input) {
+    public function addInput(Input $input) {
         // array_push($this->inputs, $elem)
         $this->inputs[] = $input;
     }
@@ -35,21 +35,17 @@ class Form {
     }
 
     public function getHtml() {
-        $html = <<<EOT
+        $html = <<<HTML
         <form action="$this->action" method="$this->method">
-        EOT;
+        HTML;
 
         foreach ($this->inputs as $input) {
-            $html .= <<<EOT
-            <div class="input">
-            {$input['label']} : <input type="{$input['type']}" name="{$input['name']}" />
-            </div>
-            EOT;
+            $html .= $input->getHtml();
         }
         
-        $html .= <<<EOT
+        $html .= <<<HTML
         <button type="submit">$this->text_submit</button>
-        EOT;
+        HTML;
         $html .= "</form>";
 
         return $html;
