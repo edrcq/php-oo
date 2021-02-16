@@ -1,16 +1,14 @@
 <?php 
 
 require_once "FormClass.php";
-
-$inputs_array = [
-    [ 'label' => 'Username', 'name' => 'username', 'type' => 'text' ],
-    [ 'label' => 'Password', 'name' => 'password', 'type' => 'password' ],
-];
+require_once "InputClassCorr.php";
 
 $form = new Form("action.php", "post", "Login NOW");
-$form->addInput("username", "text", "Username");
+$usernameInput = new InputText("username", "Username");
+$selectInput = new InputSelect("select_it", "Select please", ['France', 'Suisse', 'Belgique']);
 
-var_dump($form->getInputs());
+$form->addInput($usernameInput);
+$form->addInput($selectInput);
 
-echo $form->getHtml();
+$form->print();
 
